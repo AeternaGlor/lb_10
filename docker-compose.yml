@@ -1,0 +1,27 @@
+services:
+  postgress:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: db_password
+      POSTGRES_USER: db_user
+      POSTGRES_DB: db_name
+    ports:
+      - "5432:5432"
+
+  ice_cream:
+    build:
+      context: ./ice_cream_project
+    container_name: ice_cream_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgress
+    environment:
+      DB_NAME: 'db_name'
+      DB_USER': 'db_user'
+      DB_PASSWORD': 'db_password'
+      DB_HOST': 'postgress'
+      DB_PORT': 5432
+    
+
