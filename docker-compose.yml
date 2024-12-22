@@ -17,11 +17,6 @@ services:
       - "8000:8000"
     depends_on:
       - postgress
-    environment:
-      DB_NAME: 'db_name'
-      DB_USER': 'db_user'
-      DB_PASSWORD': 'db_password'
-      DB_HOST': 'postgress'
-      DB_PORT': 5432
+
     
 
